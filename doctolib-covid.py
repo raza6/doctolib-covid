@@ -14,12 +14,11 @@ centers = [center.strip() for center in centers
            if not center.startswith("#")] 
 
 for center in centers:
-    
     data = requests.get(f"https://www.doctolib.fr/booking/{center}.json").json()["data"]
     
     visit_motives = [visit_motive for visit_motive in data["visit_motives"]
-                     if visit_motive["name"].startswith("1re injection") and 
-                     "AstraZeneca" not in visit_motive["name"]]
+                     if "rappel" in visit_motive["name"] and 
+                     "Pfizer" in visit_motive["name"]]
     if not visit_motives:
         continue
     
@@ -44,9 +43,9 @@ for center in centers:
         
         agenda_ids = "-".join([str(agenda["id"]) for agenda in agendas])
                
-        # print(visit_motive_ids)
-        # print(practice_ids)
-        # print(agenda_ids)
+        print(visit_motive_ids)
+        print(practice_ids)
+        print(agenda_ids)
         
         response = requests.get(
                 "https://www.doctolib.fr/availabilities.json",
