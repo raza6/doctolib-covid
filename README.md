@@ -1,4 +1,4 @@
-## Doctolib COVID
+## Vaccito (forked from Doctolib COVID)
 
 This script sends twitter DMs when vaccination appointments are available on Doctolib. Specifically for third Pfizer shot.
 Uses curl under the hood to bypass doctolib filtering or whatever...
